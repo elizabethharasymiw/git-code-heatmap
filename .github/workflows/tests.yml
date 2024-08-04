@@ -22,8 +22,5 @@ jobs:
         brew install tcl-tk
         brew install python-tk
 
-    - name: Run program
-      run: make run
-
     - name: Run Tests
       run: make test
