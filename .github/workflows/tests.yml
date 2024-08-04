@@ -1,0 +1,29 @@
+name: CI tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  tests:
+
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install brew
+      run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    - name: Install Python Tkinter
+      run: |
+        brew install tcl-tk
+        brew install python-tk
+
+    - name: Run program
+      run: make run
+
+    - name: Run Tests
+      run: make test
